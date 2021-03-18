@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios'
 import "./App.css";
 import Header from './components/header'
+import Top from './components/top'
 import NasaPhoto from './components/nasaPhoto'
+import Footer from './components/footer'
 
 function App() {
   const [nasaData, setNasaData] = useState(null)
@@ -20,10 +22,12 @@ function App() {
 
   return (
     <>
-      <div className='App'></div>
+      {/* <div className='App-header'></div> */}
     <div>
       <Header />
+      {nasaData && <Top nasaDataDate={nasaData.date}/>}
       {nasaData && <NasaPhoto nasaDataURL={nasaData.url}/>}
+      {nasaData && <Footer nasaDataCopyR={nasaData.copyright}/>}
     </div>
     </>
   );
